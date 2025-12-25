@@ -7,7 +7,7 @@ export const redditHandler: DeepLinkHandler = {
     url.match(/reddit\.com\/r\/[^/]+\/comments\/([^/]+)/) ??
     url.match(/redd\.it\/([^/?]+)/),
 
-  build: (webUrl) => {
+  build: (webUrl, match) => {
     const path = webUrl.replace(/^https?:\/\//, '');
 
     return {
