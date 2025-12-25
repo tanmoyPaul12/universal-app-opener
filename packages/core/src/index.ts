@@ -1,9 +1,15 @@
-import { instagramHandler, linkedinHandler, unknownHandler, youtubeHandler } from './platforms';
+import {
+  instagramHandler,
+  linkedinHandler,
+  unknownHandler,
+  youtubeHandler,
+  spotifyHandler,
+} from './platforms';
 import { DeepLinkResult } from './types';
 
 export * from './types';
 
-const handlers = [youtubeHandler, linkedinHandler, instagramHandler];
+const handlers = [youtubeHandler, linkedinHandler, instagramHandler, spotifyHandler];
 export function generateDeepLink(url: string): DeepLinkResult {
   const webUrl = url.trim();
 
