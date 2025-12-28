@@ -38,7 +38,9 @@ exampleLinks.forEach((link) => {
 
   // To get mouse wheel click
   link.addEventListener('auxclick', (e) => {
-    getLinkDetails(link, e);
+    if (e.button === 1) {
+      getLinkDetails(link, e);
+    }
   });
 });
 
