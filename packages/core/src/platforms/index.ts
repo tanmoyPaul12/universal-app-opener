@@ -6,6 +6,7 @@ import { facebookHandler } from './facebook';
 import { spotifyHandler } from './spotify';
 import { whatsappHandler } from './whatsapp';
 import { threadsHandler } from "./threads";
+import { redditHandler } from './reddit';
 
 export {
     linkedinHandler,
@@ -15,6 +16,7 @@ export {
     threadsHandler,
     whatsappHandler,
     facebookHandler,
+    redditHandler,
     unknownHandler
 }
 
