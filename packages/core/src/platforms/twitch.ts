@@ -15,7 +15,7 @@ const PATTERNS: Array<[type: string, regex: RegExp]> = [
   ['directory/all/tags', /^twitch\.tv\/directory\/all\/tags\/([A-Za-z0-9_-]+)\/?$/],
   [
     'clip',
-    /^(?:https?:\/\/)?(?:(?:clips\.twitch\.tv\/)|(?:twitch\.tv\/[a-zA-Z0-9_]{4,25}\/clip\/))([A-Za-z0-9_-]+)\/?$/,
+    /^(?:(?:clips\.twitch\.tv\/)|(?:twitch\.tv\/[a-zA-Z0-9_]{4,25}\/clip\/))([A-Za-z0-9_-]+)\/?$/,
   ],
 ];
 

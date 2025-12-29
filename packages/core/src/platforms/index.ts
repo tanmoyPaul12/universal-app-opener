@@ -1,5 +1,6 @@
 import { discordHandler } from './discord';
 import { facebookHandler } from './facebook';
+import { githubHandler } from './github';
 import { instagramHandler } from './instagram';
 import { linkedinHandler } from './linkedin';
 import { redditHandler } from './reddit';
@@ -13,6 +14,7 @@ import { youtubeHandler } from './youtube';
 export {
   discordHandler,
   facebookHandler,
+  githubHandler,
   instagramHandler,
   linkedinHandler,
   redditHandler,
