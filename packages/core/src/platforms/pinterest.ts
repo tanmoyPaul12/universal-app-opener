@@ -9,6 +9,17 @@ const patterns: Array<[type: string, regex: RegExp]> = [
   ['user', /pinterest\.com\/([^/?#]+)/],
 ];
 
+const RESERVED_PATHS = new Set([
+  'ideas',
+  'search',
+  'topics',
+  'explore',
+  'about',
+  'business',
+  'today',
+  'settings',
+]);
+
 const getUrlWithoutProtocol = (url: string) => url.replace(/^https?:\/\//, '');
 
 /**
@@ -33,18 +44,18 @@ const buildResult = (webUrl: string, ios: string | null): DeepLinkResult => {
  */
 const builders: Record<string, (match: RegExpMatchArray, webUrl: string) => DeepLinkResult> = {
   pin: (match, webUrl) => {
-    const pinId = match[1];
+    const pinId = match[2];
     return buildResult(webUrl, `pinterest://pin/${pinId}`);
   },
 
   board: (match, webUrl) => {
-    const username = match[1];
-    const board = match[2];
+    const username = match[2];
+    const board = match[3];
     return buildResult(webUrl, `pinterest://board/${username}/${board}`);
   },
 
   user: (match, webUrl) => {
-    const username = match[1];
+    const username = match[2];
     return buildResult(webUrl, `pinterest://user/${username}`);
   },
 };
@@ -56,7 +67,16 @@ export const pinterestHandler: DeepLinkHandler = {
   match: (url) => {
     for (const [type, regex] of patterns) {
       const matchResult = url.match(regex);
-      if (matchResult) return [matchResult[0], type, ...matchResult.slice(1)] as RegExpMatchArray;
+      if (!matchResult) continue;
+
+      if (type === 'user' || type === 'board') {
+        const firstSegment = matchResult[1];
+        if (RESERVED_PATHS.has(firstSegment)) {
+          return null;
+        }
+      }
+
+      return [matchResult[0], type, ...matchResult.slice(1)] as RegExpMatchArray;
     }
     return null;
   },
