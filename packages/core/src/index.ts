@@ -1,31 +1,35 @@
 import {
-  threadsHandler,
-  instagramHandler,
   linkedinHandler,
-  unknownHandler,
-  whatsappHandler,
   youtubeHandler,
-  facebookHandler,
+  instagramHandler,
   spotifyHandler,
+  threadsHandler,
+  whatsappHandler,
+  facebookHandler,
+  redditHandler,
   discordHandler,
   githubHandler,
   pinterestHandler,
+  twitchHandler,
+  unknownHandler,
 } from './platforms';
 import { DeepLinkResult } from './types';
 
 export * from './types';
 
 const handlers = [
-  youtubeHandler,
   linkedinHandler,
+  youtubeHandler,
   instagramHandler,
-  discordHandler,
-  facebookHandler,
   spotifyHandler,
-  whatsappHandler,
   threadsHandler,
+  whatsappHandler,
+  facebookHandler,
+  redditHandler,
+  discordHandler,
   githubHandler,
   pinterestHandler,
+  twitchHandler,
 ];
 export function generateDeepLink(url: string): DeepLinkResult {
   const webUrl = url.trim();
