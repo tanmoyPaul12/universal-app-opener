@@ -19,7 +19,7 @@ export const substackHandler: DeepLinkHandler = {
     return url.match(/^https?:\/\/([a-z0-9-]+)\.substack\.com(\/(?:p\/[^/?#]+|about|archive)?)?/i);
   },
 
-  build: (webUrl) => {
+  build: (webUrl, _match) => {
     // Substack uses Universal Links (iOS) and App Links (Android)
     // The native app intercepts HTTPS URLs directly - no custom scheme exists
     // Return the HTTPS URL for both platforms; the OS handles app interception
