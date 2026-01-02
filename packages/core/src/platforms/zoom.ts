@@ -6,6 +6,7 @@ import { DeepLinkHandler } from '../types';
  * Supports:
  * - Meeting links: https://zoom.us/j/1234567890
  * - Meeting links with password: https://zoom.us/j/1234567890?pwd=abcdef
+ * - Meeting links with password in any query position: https://zoom.us/j/1234567890?uname=Guest&pwd=abcdef
  * - Meeting links from subdomains: https://us02web.zoom.us/j/1234567890
  *
  * Deep link schemes:
@@ -15,12 +16,17 @@ import { DeepLinkHandler } from '../types';
 export const zoomHandler: DeepLinkHandler = {
   match: (url) => {
     // Match zoom.us/j/<meeting_id> or *.zoom.us/j/<meeting_id>
-    return url.match(/^https?:\/\/(?:[a-z0-9-]+\.)?zoom\.us\/j\/(\d+)(?:\?pwd=([a-zA-Z0-9]+))?/);
+    // Only capture the meeting ID here, password is extracted separately
+    return url.match(/^https?:\/\/(?:[a-z0-9-]+\.)?zoom\.us\/j\/(\d+)/);
   },
 
   build: (webUrl, match) => {
     const meetingId = match[1];
-    const password = match[2] || '';
+
+    // Extract password from query string (handles pwd in any position)
+    // Password can contain alphanumeric, dash, underscore, and other URL-safe base64 characters
+    const pwdMatch = webUrl.match(/[?&]pwd=([a-zA-Z0-9_-]+)/);
+    const password = pwdMatch ? pwdMatch[1] : '';
 
     // Build the deep link path
     let deepLinkParams = `confno=${meetingId}`;
