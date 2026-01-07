@@ -3,6 +3,7 @@ import {
   youtubeHandler,
   instagramHandler,
   spotifyHandler,
+  substackHandler,
   threadsHandler,
   whatsappHandler,
   facebookHandler,
@@ -25,6 +26,7 @@ const handlers = [
   youtubeHandler,
   instagramHandler,
   spotifyHandler,
+  substackHandler,
   threadsHandler,
   whatsappHandler,
   snapchatHandler,
@@ -34,7 +36,7 @@ const handlers = [
   githubHandler,
   pinterestHandler,
   twitchHandler,
-  telegramHandler
+  telegramHandler,
 ];
 export function generateDeepLink(url: string): DeepLinkResult {
   const webUrl = normalizeUrl(url);

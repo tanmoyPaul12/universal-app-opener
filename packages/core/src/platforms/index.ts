@@ -6,19 +6,21 @@ import { linkedinHandler } from './linkedin';
 import { pinterestHandler } from './pinterest';
 import { redditHandler } from './reddit';
 import { spotifyHandler } from './spotify';
+import { substackHandler } from './substack';
 import { threadsHandler } from './threads';
 import { twitchHandler } from './twitch';
 import { unknownHandler } from './unknown';
 import { whatsappHandler } from './whatsapp';
 import { youtubeHandler } from './youtube';
 import { snapchatHandler } from './snapchat';
-import { telegramHandler } from "./telegram";
+import { telegramHandler } from './telegram';
 
 export {
   linkedinHandler,
   youtubeHandler,
   instagramHandler,
   spotifyHandler,
+  substackHandler,
   threadsHandler,
   whatsappHandler,
   facebookHandler,
