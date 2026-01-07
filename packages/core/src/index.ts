@@ -15,6 +15,7 @@ import {
   snapchatHandler,
   telegramHandler,
   unknownHandler,
+  zoomHandler,
 } from './platforms';
 import { DeepLinkResult } from './types';
 import { normalizeUrl } from './utils/normalizeUrl';
@@ -37,6 +38,7 @@ const handlers = [
   pinterestHandler,
   twitchHandler,
   telegramHandler,
+  zoomHandler,
 ];
 export function generateDeepLink(url: string): DeepLinkResult {
   const webUrl = normalizeUrl(url);
